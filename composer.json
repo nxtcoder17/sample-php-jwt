@@ -1,0 +1,12 @@
+{
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+      "files": ["modules/utils/db-connect.php"]
+    },
+    "config":{
+        "vendor-dir":"vendor"
+    }
+
+}
