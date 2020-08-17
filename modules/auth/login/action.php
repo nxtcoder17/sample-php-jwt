@@ -9,13 +9,6 @@ $secretKey = "my-secret";
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$payload = array(
-    "email" => $email,
-);
-
-$jwt = JWT::encode($payload, $secretKey);
-$decoded = (array) JWT::decode($jwt, $secretKey, array('HS256'));
-
 $result = $connection->query("SELECT * from users where email='$email' and password='$password'");
 
 $loggedInUser = null;
@@ -44,3 +37,5 @@ $userId = $loggedInUser['userId'];
 if ($connection->query("INSERT INTO tokens(userId, token) VALUES($userId,'$authToken'); ") === FALSE) {
   echo "Some Error occurred while dumping token to DB";
 }
+
+// $decoded = (array) JWT::decode($authToken, $secretKey, array('HS256'));
